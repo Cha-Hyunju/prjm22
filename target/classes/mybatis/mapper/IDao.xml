@@ -102,5 +102,9 @@
 	<insert id="imgwrite">
    INSERT INTO REBRDIMGTB VALUES(REBRDIMGTB_SEq.NEXTVAL,#{param1},#{param2},#{param3})
    </insert>
+   
+   <select id="selectImg" resultType="com.tech.prjm09.dto.ReBrdimgDto">
+   SELECT * FROM REBRDIMGTB WHERE BID=#{param1}  
+   </select>
 
 </mapper>

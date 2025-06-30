@@ -22,6 +22,7 @@ import com.tech.command.BReplyViewCommand;
 import com.tech.command.BWriteCommand;
 import com.tech.prjm09.dao.IDao;
 import com.tech.prjm09.dto.BDto;
+import com.tech.prjm09.dto.ReBrdimgDto;
 import com.tech.prjm09.utill.SearchVO;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -191,12 +192,12 @@ public class BController {
 	
 	@RequestMapping("/content_view")
 	private String content_view(HttpServletRequest request,Model model) {
-//		model.addAttribute("request", request);
-//		command=new BContentCommand();
-//		command.execute(model);
 		String bid=request.getParameter("bid");
 		BDto dto=iDao.contentView(bid);
 		model.addAttribute("content_view",dto);
+		
+		ArrayList<ReBrdimgDto> imgList=iDao.selectImg(bid);
+		model.addAttribute("imgList",imgList);
 		
 		return "content_view";
 	}
