@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.tech.prjm09.dto.BDto;
+import com.tech.prjm09.dto.ReBrdimgDto;
+
 
 @Mapper
 public interface IDao {
@@ -23,4 +25,5 @@ public interface IDao {
 	public int selectBoardCount(String sk, String selNUm);
 	public int selBid();
 	public void imgwrite(int bid,String orifinalFile,String changeFile);
+	public ArrayList<ReBrdimgDto> selectImg(String bid);
 }
