@@ -9,7 +9,7 @@
 <body>
 <h3>write_view</h3>
 
-<form action="write" method="post">
+<form action="write" method="post" enctype="multipart/form-data" >
 <table width="500" border="1">
 	<tr>
 		<td>이름</td>
@@ -22,6 +22,10 @@
 	<tr>
 		<td>내용</td>
 		<td><textarea name="bcontent" id="bcontent" cols="30" rows="10">content</textarea></td>
+	</tr>
+	<tr>
+		<td>첨부</td>
+		<td><input multiple="multiple" type="file" name="file" size="50" /></td>
 	</tr>
 	<tr>
 		<td colspan="2"><input type="submit" value="write" /></td>
