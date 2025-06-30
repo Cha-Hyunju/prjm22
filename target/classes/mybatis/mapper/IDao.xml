@@ -98,5 +98,9 @@
    <select id="selBid" resultType="Integer">
    SELECT MAX(BID) FROM REPLYBOARD
    </select>
+   
+	<insert id="imgwrite">
+   INSERT INTO REBRDIMGTB VALUES(REBRDIMGTB_SEq.NEXTVAL,#{param1},#{param2},#{param3})
+   </insert>
 
 </mapper>
