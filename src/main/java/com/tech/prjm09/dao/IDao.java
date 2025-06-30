@@ -21,4 +21,5 @@ public interface IDao {
 	public void delete(String bid);
 //	public int selectBoardCount();
 	public int selectBoardCount(String sk, String selNUm);
+	public int selBid();
 }
