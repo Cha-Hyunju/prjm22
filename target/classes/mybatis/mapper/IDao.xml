@@ -94,5 +94,9 @@
    <delete id="delete">
    DELETE FROM REPLYBOARD WHERE BID=${param1}
    </delete>
+   
+   <select id="selBid" resultType="Integer">
+   SELECT MAX(BID) FROM REPLYBOARD
+   </select>
 
 </mapper>

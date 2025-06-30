@@ -1,11 +1,14 @@
 package com.tech.prjm09.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.tech.command.BCommand;
 import com.tech.command.BContentCommand;
@@ -150,14 +153,19 @@ public class BController {
 	}
 	
 	@RequestMapping("/write")
-	private String write(HttpServletRequest request, Model model) {
-//		model.addAttribute("request",request);
-//		command=new BWriteCommand();
-//		command.execute(model);
-		String bname=request.getParameter("bname");
-		String btitle=request.getParameter("btitle");
-		String bcontent=request.getParameter("bcontent");
+	private String write(MultipartHttpServletRequest mtrequest, Model model) {
+
+		String bname=mtrequest.getParameter("bname");
+		String btitle=mtrequest.getParameter("btitle");
+		String bcontent=mtrequest.getParameter("bcontent");
 		iDao.write(bname, btitle, bcontent);
+		
+		String workPath=System.getProperty("user.dir");
+		String root=workPath+"\\src\\main\\resources\\static\\files";
+		
+		List<MultipartFile> fileList=mtrequest.getFiles("file");
+		
+		int bid=iDao.selBid();
 		
 		return "redirect:list";
 	}
