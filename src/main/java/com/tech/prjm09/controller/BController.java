@@ -179,7 +179,7 @@ public class BController {
 			try {
 				if (!originalFile.equals("")) {
 					mf.transferTo(new File(pathfile));
-
+					iDao.imgwrite(bid,originalFile,changeFile);
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
