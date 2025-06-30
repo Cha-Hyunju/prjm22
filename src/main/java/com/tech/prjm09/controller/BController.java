@@ -1,5 +1,6 @@
 package com.tech.prjm09.controller;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -166,6 +167,24 @@ public class BController {
 		List<MultipartFile> fileList=mtrequest.getFiles("file");
 		
 		int bid=iDao.selBid();
+		
+		for (MultipartFile mf : fileList) {
+			String originalFile=mf.getOriginalFilename();
+			System.out.println("originalfiles :"+originalFile);
+			long longtime=System.currentTimeMillis();
+			String changeFile=longtime+"_"+originalFile;
+			System.out.println("change Files :"+changeFile);
+			
+			String pathfile=root+"\\"+changeFile;
+			try {
+				if (!originalFile.equals("")) {
+					mf.transferTo(new File(pathfile));
+					iDao.imgwrite(bid,originalFile,changeFile);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		return "redirect:list";
 	}

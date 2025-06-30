@@ -22,4 +22,5 @@ public interface IDao {
 //	public int selectBoardCount();
 	public int selectBoardCount(String sk, String selNUm);
 	public int selBid();
+	public void imgwrite(int bid,String orifinalFile,String changeFile);
 }
